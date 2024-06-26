@@ -17,8 +17,6 @@
 // sumZero([-2, 0, 1, 3]) // undefined
 // sumZero([1,2,3]) // undefined
 
-// Since it's a sorted array we can use binary search
-
 const sumZero = (arr) => {
   // define start and end positions
   let start = 0;

@@ -50,21 +50,22 @@ const validAnagram = (str1, str2) => {
     return false;
   }
 
-  // create two frequency counters and store occurences for each character
+  // create a counter to store frequency of each character occurences in str1
   let counter = {};
 
-  for (let char of str1) {
-    // initialize with 1 or increment by 1 for char occurence
-    counter[char] = (counter[char] || 0) + 1;
-  }
+  // Increment char count for each occurence or initialize with 1
+  [...str1.toLowerCase()].forEach((char) => {
+    counter[char] = ++counter[char] || 1;
+  });
 
+  // check if count of characters for str2 match with the counter
   for (let char of str2) {
-    // return false if char not found or char frequency is zero/falsy
-    if (!counter[char]) {
+    // return false if character doesn't exist in counter
+    if (!(char in counter)) {
       return false;
     } else {
-      // reduce count by 1 for each occurence
-      counter[char] -= 1;
+      // reduce count by 1 if character exists
+      --counter[char];
     }
   }
 
