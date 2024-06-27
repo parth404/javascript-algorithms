@@ -23,8 +23,9 @@
 // add 1 i.e i+1 to get the actual position in the array which will be equal to the number of unique values.
 
 const countUniqueValues = (arr) => {
-  // variable to store result
-  let result = 0;
+  // handling empty array
+  if (arr.length === 0) return 0;
+
   let i = 0; // first pointer
 
   // loop through the array using j second pointer
@@ -33,12 +34,11 @@ const countUniqueValues = (arr) => {
     if (arr[i] !== arr[j]) {
       i++; // move i up one position
       arr[i] = arr[j]; // replace value with current value of arr[j]
-      result = i + 1; // store i's actual position as result
+      result = i + 1;
     }
   }
-  return result;
+  return i + 1; // return i's actual position in the array as result
 };
 
 // Output
-
 console.log(countUniqueValues([1, 2, 3, 4, 4, 4, 7, 7, 12, 12, 13]));
